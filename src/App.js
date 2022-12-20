@@ -69,6 +69,7 @@ function App() {
           setThemeSelect={setThemeSelect}
           setPlayerOneChar={setPlayerOneChar}
           setPlayerTwoChar={setPlayerTwoChar}
+          setWinner={setWinner}
           setTiles={setTiles}/>}
     </div> 
   );

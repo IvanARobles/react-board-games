@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function GameScroll({ gameSelect, setGameSelect, setTiles, setPlayerOneTurn, setThemeSelect, setPlayerOneChar, setPlayerTwoChar }) {
+export default function GameScroll({ gameSelect, setGameSelect, setTiles, setPlayerOneTurn, setThemeSelect, setPlayerOneChar, setPlayerTwoChar, setWinner }) {
   
   function handlePrevSelect(e) {
     let gameSelectCopy = [...gameSelect]
@@ -23,6 +23,7 @@ export default function GameScroll({ gameSelect, setGameSelect, setTiles, setPla
   }
 
   function handleReset() {
+    setWinner('')
     setTiles(['','','','','','','','',''])
     setPlayerOneTurn(true)
     setThemeSelect('')
