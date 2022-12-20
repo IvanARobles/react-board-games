@@ -78,7 +78,7 @@ export default function Game({
   return (
     <>
       {gameCurrentlySelected === 'Home' && <div className={gameClassName}>
-        <img 
+        <img alt='Ivan Robles Cartoon-Themed Board Games'
           src={logo}
           className='main-logo'
         />

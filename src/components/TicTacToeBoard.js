@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import TicTacToeTile from './TicTacToeTile'
 
 export default function TicTacToeBoard({ playerOneChar, playerTwoChar, setWinner, tiles, setTiles, playerOneTurn, setPlayerOneTurn }) {
