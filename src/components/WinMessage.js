@@ -1,6 +1,17 @@
 import React from 'react'
 
-export default function WinMessage({ winner, setWinner, setTiles, setPlayerOneTurn, setThemeSelect, setPlayerOneChar, setPlayerTwoChar, gameSelect, setGameSelect }) {
+export default function WinMessage({ 
+    winner, 
+    setWinner, 
+    setTiles, 
+    setPlayerOneTurn, 
+    setThemeSelect, 
+    setPlayerOneChar, 
+    setPlayerTwoChar, 
+    gameSelect, 
+    setGameSelect,
+    playerOneChar,
+    playerTwoChar }) {
 
   function handleRestartGame() {
     setWinner('')
@@ -25,12 +36,23 @@ export default function WinMessage({ winner, setWinner, setTiles, setPlayerOneTu
     nowSelectedCopy.selected = true
     setGameSelect(gameSelectCopy)
   }
+  let playerOneClass = `player-icon bordered ${playerOneChar.toLowerCase()}`
+  let playerTwoClass = `player-icon bordered ${playerTwoChar.toLowerCase()}`
+  let winnerClass = 'error'
+  if (winner === 'Player One') {
+    winnerClass = playerOneClass
+  } else {
+    winnerClass = playerTwoClass
+  }
   return (
     <>
       <section className='win-message-blocker'>
         <div className='win-message-box'>
-          {winner === 'Tie' && <h3>It's a Tie!</h3>}
-          {winner !== 'Tie' && <h3>{winner} Wins!</h3>}
+          {winner === 'Tie' && <h2>It's a Draw!</h2>}
+          {winner !== 'Tie' && <div className='winner-info'>
+            <div className={winnerClass}></div>
+            <h2>Wins!</h2>
+          </div>}
           <div className='win-buttons'>
         <button 
           onClick={handleRestartGame}

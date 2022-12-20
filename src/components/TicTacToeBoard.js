@@ -3,11 +3,13 @@ import TicTacToeTile from './TicTacToeTile'
 
 export default function TicTacToeBoard({ playerOneChar, playerTwoChar, setWinner, tiles, setTiles, playerOneTurn, setPlayerOneTurn }) {
 
-  let nextTurn = 'error'
+  let nextTurnClass = 'error'
+  let playerOneClass = `player-icon ${playerOneChar.toLowerCase()}`
+  let playerTwoClass = `player-icon ${playerTwoChar.toLowerCase()}`
   if (playerOneTurn) {
-    nextTurn = 'Player One'
+    nextTurnClass = playerOneClass
   } else {
-    nextTurn = 'Player Two'
+    nextTurnClass = playerTwoClass
   }
   
   return (
@@ -26,7 +28,10 @@ export default function TicTacToeBoard({ playerOneChar, playerTwoChar, setWinner
         <TicTacToeTile tiles={tiles} setTiles={setTiles} idx={8} playerOneTurn={playerOneTurn} setPlayerOneTurn={setPlayerOneTurn} playerOneChar={playerOneChar} playerTwoChar={playerTwoChar} setWinner={setWinner}/>
 
       </div>
-      <p>Next turn: {nextTurn}</p>
+      <div className='player-info'>
+        <p>Next turn:</p>
+        <div className={nextTurnClass}></div>
+      </div>
     </div>
   )
 }

@@ -123,7 +123,9 @@ export default function Game({
           setThemeSelect={setThemeSelect}
           setPlayerOneChar={setPlayerOneChar}
           setPlayerTwoChar={setPlayerTwoChar}
-          setTiles={setTiles}/>}
+          setTiles={setTiles}
+          playerOneChar={playerOneChar}
+          playerTwoChar={playerTwoChar}/>}
         {rules !== '' && <RulesDisplay selectedGame={gameCurrentlySelected} setRules={setRules} />}
 
         <GameExtraButtons 
