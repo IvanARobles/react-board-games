@@ -1,38 +1,726 @@
-.App {
-  text-align: center;
+:root {
+  --header-color: #fff;
+  --game-section-color: #fff;
+  --game-section-color-hover: rgba(0, 0, 0, 0.25);
+  --scroll-bar-color: #fff;
+  --header-text-color: #000;
+  --game-section-text-color: #000;
+  --scroll-bar-text-color: #000;
+
+  --light-grey: #bac2d3;
+  --white-transparent-75p: rgba(255, 255, 255, 0.25); 
+  --black-transparent-75p: rgba(0, 0, 0, 0.25); 
+  /* Variables used to color Spongebob Themed Games */
+  --spng-header-color: #379bad;
+  --spng-background-color: #329dc5;
+  --spng-scroll-bar-color: #d4d3b4;
+  --spng-line-color: #fff;
+  --spng-scroll-bar-text-color: #403b0e;
+  /* Variables used to color Marvel Themed Games */
+  --marv-header-color: #ed1d24;
+  --marv-header-text-color: #fff;
+  --marv-background-color: #efefef;
+  --marv-scroll-bar-color: #ed1d24;
+  --marv-line-color: #ed1d24;
+  --marv-scroll-bar-text-color: #fff;
+  /* Variables used to color Pokemon Themed Games */
+  --poke-header-color: #ef4036;
+  --poke-header-text-color: #000;
+  --poke-background-color: #323233;
+  --poke-scroll-bar-color: #fff;
+  --poke-line-color: #fff;
+  --poke-scroll-bar-text-color: #000;
+
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.main-logo {
+  max-width: 95%;
+  width: 500px;
+  margin-bottom: 2rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+.entire-page {
   min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  font-size: calc(10px + 2vmin);
+  color: var(--line-color);
+}
+
+/**** Classes to style the entire page once a theme is chosen ****/
+/* Spongebob Theme */
+.entire-page.spongebob {
+  --header-color: var(--spng-header-color);
+  --game-section-color: var(--spng-background-color);
+  --game-section-color-hover: var(--white-transparent-75p);
+  --scroll-bar-color: var(--spng-scroll-bar-color);
+  --header-text-color: var(--spng-line-color);
+  --game-section-text-color: var(--spng-line-color);
+  --scroll-bar-text-color: var(--spng-scroll-bar-text-color);
+}
+.entire-page.spongebob .game-section {
+  background: no-repeat center center;
+  background-image: url('./images/spongebob-game-background.png');
+  background-size: cover;
+}
+/* Marvel Theme */
+.entire-page.marvel {
+  --header-color: var(--marv-header-color);
+  --game-section-color: var(--marv-background-color);
+  --game-section-color-hover: var(--black-transparent-75p);
+  --scroll-bar-color: var(--marv-scroll-bar-color);
+  --header-text-color: var(--marv-header-text-color);
+  --game-section-text-color: var(--marv-line-color);
+  --scroll-bar-text-color: var(--marv-scroll-bar-text-color);
+}
+/* Pokemon Theme */
+.entire-page.pokemon {
+  --header-color: var(--poke-header-color);
+  --game-section-color: var(--poke-background-color);
+  --game-section-color-hover: var(--white-transparent-75p);
+  --scroll-bar-color: var(--poke-scroll-bar-color);
+  --header-text-color: var(--poke-line-color);
+  --game-section-text-color: var(--poke-line-color);
+  --scroll-bar-text-color: var(--poke-scroll-bar-text-color);
+}
+
+.game-header {
+  background-color: var(--header-color);
+  color: var(--header-text-color);
+  width: 100vw;
+  padding: 1rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
+  z-index: 10;
+}
+
+.game-header > h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.game-section,
+.game-section-home {
+  background-color: var(--game-section-color);
+  color: var(--game-section-text-color);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
+  z-index: 1;
+}
+
+.game-section {
+  height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  place-items: center;
+  font-size: calc(10px + 2vmin);
+}
+
+.game-section-home {
+  min-height: 100vh;
+}
+
+.scroll-game-buttons-wrapper {
+  background-color: var(--scroll-bar-color);
+  color: var(--scroll-bar-text-color);
+  width: 100vw;
+  padding: 1rem 0 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0 -3px 5px rgba(0, 0, 0, 0.5);
+  z-index: 10;
+}
+
+.scroll-game-button-prev,
+.scroll-game-button-next {
+  margin: 0;
+  padding: 0.25rem;
+  background-color: transparent;
+  color: var(--scroll-bar-text-color);
+  border: 1px solid var(--scroll-bar-text-color);;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  font-size: calc(0.75rem + 0.75vw);
+  transition: 150ms ease-in-out;
+  position: relative;
+}
+
+
+.scroll-game-button-prev {
+  margin-left: 1.5rem;
+}
+
+.scroll-game-button-next {
+  margin-right: 1.5rem;
+}
+
+
+.scroll-game-button-prev:hover,
+.scroll-game-button-prev:focus,
+.scroll-game-button-next:hover,
+.scroll-game-button-next:focus {
+  background-color: var(--scroll-bar-text-color);;
+  color: var(--scroll-bar-color);
+}
+
+.scroll-game-button-prev::after,
+.scroll-game-button-next::after {
+  position: absolute;
+  content: "";
+  top: calc(2  * -1px);
+  bottom: calc(2  * -1px);
+  left: calc(2  * -1px);
+  right: calc(2  * -1px);
+  border: 3px solid var(--scroll-bar-text-color);;
+  border-radius: 5px;
+  transition: 200ms ease-in-out;
+}
+
+.scroll-game-button-prev:hover::after,
+.scroll-game-button-next:hover::after,
+.scroll-game-button-prev:focus::after,
+.scroll-game-button-next:focus::after {
+  top: calc(5  * -1px);
+  bottom: calc(5  * -1px);
+  left: calc(5  * -1px);
+  right: calc(5  * -1px);
+}
+
+.home-game-buttons {
+  display: flex;
+  flex-direction: column;
+}
+
+.home-game-button {
+  position: relative;
+  margin: 0.5rem;
+  padding: 5px 7.5px;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: transparent;
+  color: black;
+  cursor: pointer;
+  transition: 200ms ease-in-out;
+  font-size: 1.2rem;
+}
+
+.home-game-button:hover,
+.home-game-button:focus {
+  background-color: black;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.home-game-button::after {
+  position: absolute;
+  content: "";
+  top: calc(2  * -1px);
+  bottom: calc(2  * -1px);
+  left: calc(2  * -1px);
+  right: calc(2  * -1px);
+  border: 3px solid black;
+  border-radius: 5px;
+  transition: 200ms ease-in-out;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.home-game-button:hover::after,
+.home-game-button:focus::after {
+  top: calc(5  * -1px);
+  bottom: calc(5  * -1px);
+  left: calc(5  * -1px);
+  right: calc(5  * -1px);
+}
+
+.win-message-blocker,
+.theme-select-blocker {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: flex; 
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: all 200ms ease-in-out;
+  color: black;
+}
+
+.theme-buttons {
+  display: grid; 
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+  place-items: center;
+}
+
+.theme-button {
+  position: relative;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 80%;
+  aspect-ratio: 2.3;
+}
+
+.theme-button.spongebob { background-image: url("./images/theme-cards/spongebob-theme.png"); background-size: cover; }
+.theme-button.marvel { background-image: url("./images/theme-cards/marvel-theme.png"); background-size: cover; }
+.theme-button.pokemon { background-image: url("./images/theme-cards/pokemon-theme.png"); background-size: cover; }
+
+.win-message-box,
+.theme-select-box,
+.character-select-box {
+  text-align: center;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+
+.win-message-box,
+.theme-select-box {
+  padding: 2rem;
+}
+.character-select-box {
+  padding: 2rem 2rem 1rem;
+}
+
+.win-message-box > h3,
+.theme-select-box > h3,
+.character-select-box > h3 {
+  margin-top: 0;
+}
+
+.character-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.character-button {
+  position: relative;
+  cursor: pointer;
+  aspect-ratio: 1;
+  border-radius: 5px;
+  transition: border-radius 200ms ease-in-out;
+  width: 100%;
+}
+
+.theme-button::after,
+.character-button::after {
+  position: absolute;
+  content: "";
+  top: calc(2  * -1px);
+  bottom: calc(2  * -1px);
+  left: calc(2  * -1px);
+  right: calc(2  * -1px);
+  border-radius: 5px;
+  border: 5px solid transparent;
+  transition: 200ms ease-in-out;
+  z-index: 2;
+}
+
+.theme-button:hover,
+.theme-button:focus,
+.character-button:hover,
+.character-button:focus {
+  border-radius: 0;
+
+}
+
+.theme-button:hover::after,
+.character-button:hover::after {
+  top: calc(10  * -1px);
+  bottom: calc(10  * -1px);
+  left: calc(10  * -1px);
+  right: calc(10   * -1px);
+  border-color: black;
+}
+
+/* Classes to give the character buttons images */
+/* Spongebob TicTacToe Choices */
+.character-button.spongebob {
+  background-image: url('./images/character-cards/spongebob-character.png'), url('./images/character-cards/spongebob-character-hover.png');
+  background-size: cover, 0;
+}
+.character-button.spongebob:hover {
+  background-image: url('./images/character-cards/spongebob-character-hover.png');
+}
+
+.character-button.patrick {
+  background-image: url('./images/character-cards/patrick-character.png'), url('./images/character-cards/patrick-character-hover.png');
+  background-size: cover, 0;
+}
+.character-button.patrick:hover {
+  background-image: url('./images/character-cards/patrick-character-hover.png');
+}
+
+.character-button.squidward {
+  background-image: url('./images/character-cards/squidward-character.png'), url('./images/character-cards/squidward-character-hover.png');
+  background-size: cover, 0;
+}
+.character-button.squidward:hover {
+  background-image: url('./images/character-cards/squidward-character-hover.png');
+}
+
+.character-button.mrkrabs {
+  background-image: url('./images/character-cards/mrkrabs-character.png'), url('./images/character-cards/mrkrabs-character-hover.png');
+  background-size: cover, 0;
+}
+.character-button.mrkrabs:hover {
+  background-image: url('./images/character-cards/mrkrabs-character-hover.png');
+}
+
+.character-button.plankton {
+  background-image: url('./images/character-cards/plankton-character.png'), url('./images/character-cards/plankton-character-hover.png');
+  background-size: cover, 0;
+}
+.character-button.plankton:hover {
+  background-image: url('./images/character-cards/plankton-character-hover.png');
+}
+
+.character-button.sandy {
+  background-image: url('./images/character-cards/sandy-character.png'), url('./images/character-cards/sandy-character-hover.png');
+  background-size: cover, 0;
+}
+.character-button.sandy:hover {
+  background-image: url('./images/character-cards/sandy-character-hover.png');
+}
+/* Marvel TicTacToe Choices */
+.character-button.spiderman {
+  background-image: url('./images/character-cards/spiderman-character.png'), url('./images/character-cards/spiderman-character-hover.png');
+  background-size: cover, 0;
+}
+.character-button.spiderman:hover {
+  background-image: url('./images/character-cards/spiderman-character-hover.png');
+}
+
+.character-button.spidergwen {
+  background-image: url('./images/character-cards/spidergwen-character.png'), url('./images/character-cards/spidergwen-character-hover.png');
+  background-size: cover, 0;
+}
+.character-button.spidergwen:hover {
+  background-image: url('./images/character-cards/spidergwen-character-hover.png');
+}
+
+.character-button.wolverine {
+  background-image: url('./images/character-cards/wolverine-character.png'), url('./images/character-cards/wolverine-character-hover.png');
+  background-size: cover, 0;
+}
+.character-button.wolverine:hover {
+  background-image: url('./images/character-cards/wolverine-character-hover.png');
+}
+
+.character-button.hulk {
+  background-image: url('./images/character-cards/hulk-character.png'), url('./images/character-cards/hulk-character-hover.png');
+  background-size: cover, 0;
+}
+.character-button.hulk:hover {
+  background-image: url('./images/character-cards/hulk-character-hover.png');
+}
+
+.character-button.captainamerica {
+  background-image: url('./images/character-cards/captainamerica-character.png'), url('./images/character-cards/captainamerica-character-hover.png');
+  background-size: cover, 0;
+}
+.character-button.captainamerica:hover {
+  background-image: url('./images/character-cards/captainamerica-character-hover.png');
+}
+
+.character-button.venom {
+  background-image: url('./images/character-cards/venom-character.png'), url('./images/character-cards/venom-character-hover.png');
+  background-size: cover, 0;
+}
+.character-button.venom:hover {
+  background-image: url('./images/character-cards/venom-character-hover.png');
+}
+
+/* Pokemon TicTacToe Choices */
+.character-button.charmander {
+  background-image: url('./images/character-cards/charmander-character.png'), url('./images/character-cards/charmander-character-hover.png');
+  background-size: cover, 0;
+}
+.character-button.charmander:hover {
+  background-image: url('./images/character-cards/charmander-character-hover.png');
+}
+
+.character-button.squirtle {
+  background-image: url('./images/character-cards/squirtle-character.png'), url('./images/character-cards/squirtle-character-hover.png');
+  background-size: cover, 0;
+}
+.character-button.squirtle:hover {
+  background-image: url('./images/character-cards/squirtle-character-hover.png');
+}
+
+.character-button.bulbasaur {
+  background-image: url('./images/character-cards/bulbasaur-character.png'), url('./images/character-cards/bulbasaur-character-hover.png');
+  background-size: cover, 0;
+}
+.character-button.bulbasaur:hover {
+  background-image: url('./images/character-cards/bulbasaur-character-hover.png');
+}
+
+.character-button.pikachu {
+  background-image: url('./images/character-cards/pikachu-character.png'), url('./images/character-cards/pikachu-character-hover.png');
+  background-size: cover, 0;
+}
+.character-button.pikachu:hover {
+  background-image: url('./images/character-cards/pikachu-character-hover.png');
+}
+
+.character-button.mewtwo {
+  background-image: url('./images/character-cards/mewtwo-character.png'), url('./images/character-cards/mewtwo-character-hover.png');
+  background-size: cover, 0;
+}
+.character-button.mewtwo:hover {
+  background-image: url('./images/character-cards/mewtwo-character-hover.png');
+}
+
+.character-button.lucario {
+  background-image: url('./images/character-cards/lucario-character.png'), url('./images/character-cards/lucario-character-hover.png');
+  background-size: cover, 0;
+}
+.character-button.lucario:hover {
+  background-image: url('./images/character-cards/lucario-character-hover.png');
+}
+
+/* End of classes to give character buttons images */
+
+.character-button.character-taken {
+  pointer-events: none;
+  filter: grayscale(1) brightness(0.75);
+  border-radius: 5px;
+}
+
+.extra-game-buttons-wrapper {
+  width: 100vw;
+  padding: 1rem 0 0;
+  display: flex;
+  justify-content: space-between;
+  z-index: 2;
+}
+
+.extra-game-button {
+  margin: 0;
+  padding: 0.25rem;
+  background-color: transparent;
+  color: var(--game-section-text-color);
+  border: 1px solid var(--game-section-text-color);
+  border-radius: 0.25rem;
+  cursor: pointer;
+  /* font-size: calc(0.75rem + 0.75vw); */
+  transition: 150ms ease-in-out;
+  position: relative;
+}
+
+.extra-game-button:first-child {
+  margin-left: 1.25rem;
+}
+.extra-game-button:last-child {
+  margin-right: 1.25rem;
+}
+
+.extra-game-button:hover,
+.extra-game-button:focus {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0);
+  background-color: var(--game-section-text-color);
+  color: var(--game-section-color);
+}
+
+.extra-game-button::after{
+  position: absolute;
+  content: "";
+  top: calc(2  * -1px);
+  bottom: calc(2  * -1px);
+  left: calc(2  * -1px);
+  right: calc(2  * -1px);
+  border: 3px solid var(--game-section-text-color);
+  border-radius: 5px;
+  transition: 200ms ease-in-out;
+}
+
+.extra-game-button:hover::after,
+.extra-game-button:focus::after {
+  top: calc(5  * -1px);
+  bottom: calc(5  * -1px);
+  left: calc(5  * -1px);
+  right: calc(5  * -1px);
+}
+
+.win-buttons {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.modal-button {
+  margin: 0;
+  padding: 0.25rem;
+  background-color: transparent;
+  color: black;
+  border: 1px solid black;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  /* font-size: calc(0.75rem + 0.75vw); */
+  transition: 150ms ease-in-out;
+  position: relative;
+}
+
+.modal-button:hover,
+.modal-button:focus {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0);
+  background-color: black;
+  color: white;
+}
+
+.modal-button::after{
+  position: absolute;
+  content: "";
+  top: calc(2  * -1px);
+  bottom: calc(2  * -1px);
+  left: calc(2  * -1px);
+  right: calc(2  * -1px);
+  border: 3px solid black;
+  border-radius: 5px;
+  transition: 200ms ease-in-out;
+}
+
+.modal-button:hover::after,
+.modal-button:focus::after {
+  top: calc(5  * -1px);
+  bottom: calc(5  * -1px);
+  left: calc(5  * -1px);
+  right: calc(5  * -1px);
+}
+
+.player-info-wrapper {
+  width: 99vw;
+  padding: 0 0 1rem;
+  display: flex;
+  justify-content: space-between;
+  z-index: 2;
+  font-size: 1.2rem;
+}
+
+.player-info {
+  display: grid;
+  grid-template-columns: 1fr 0.5fr;
+  place-items: center;
+  gap: 0.25rem;
+  padding: 0 5px;
+}
+
+.player-info > p {
+  margin: 0;
+}
+
+.player-icon {
+  width: 100%;
+  aspect-ratio: 1;
+  background-color: transparent;
+}
+
+/* Spongebob */
+.player-icon.spongebob { background-image: url('./images/character-cards/spongebob-character.png'); background-size: cover; }
+.player-icon.patrick { background-image: url('./images/character-cards/patrick-character.png'); background-size: cover; }
+.player-icon.squidward { background-image: url('./images/character-cards/squidward-character.png'); background-size: cover; }
+.player-icon.mrkrabs { background-image: url('./images/character-cards/mrkrabs-character.png'); background-size: cover; }
+.player-icon.sandy { background-image: url('./images/character-cards/sandy-character.png'); background-size: cover; }
+.player-icon.plankton { background-image: url('./images/character-cards/plankton-character.png'); background-size: cover; }
+/* Marvel */
+.player-icon.spiderman { background-image: url('./images/character-cards/spiderman-character.png'); background-size: cover; }
+.player-icon.spidergwen { background-image: url('./images/character-cards/spidergwen-character.png'); background-size: cover; }
+.player-icon.wolverine { background-image: url('./images/character-cards/wolverine-character.png'); background-size: cover; }
+.player-icon.hulk { background-image: url('./images/character-cards/hulk-character.png'); background-size: cover; }
+.player-icon.captainamerica { background-image: url('./images/character-cards/captainamerica-character.png'); background-size: cover; }
+.player-icon.venom { background-image: url('./images/character-cards/venom-character.png'); background-size: cover; }
+/* Pokemon */
+.player-icon.charmander { background-image: url('./images/character-cards/charmander-character.png'); background-size: cover; }
+.player-icon.squirtle { background-image: url('./images/character-cards/squirtle-character.png'); background-size: cover; }
+.player-icon.bulbasaur { background-image: url('./images/character-cards/bulbasaur-character.png'); background-size: cover; }
+.player-icon.pikachu { background-image: url('./images/character-cards/pikachu-character.png'); background-size: cover; }
+.player-icon.mewtwo { background-image: url('./images/character-cards/mewtwo-character.png'); background-size: cover; }
+.player-icon.lucario { background-image: url('./images/character-cards/lucario-character.png'); background-size: cover; }
+
+.board-and-turn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.board-and-turn > p {
+  margin-bottom: 0;
+  margin-top: 2rem;
+}
+
+.tic-tac-toe-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  place-items: center;
+  max-width: 90vw;
+  gap: 1px;
+  max-height: 90vw;
+  width: 380px;
+  height: 380px;
+}
+
+.tic-tac-toe-box {
+  aspect-ratio: 1;
+  width: 100%;
+  border: 2px solid  var(--game-section-text-color);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  overflow: hidden;
+}
+
+.tic-tac-toe-box:hover {
+  background-color: var(--game-section-color-hover);
+}
+
+.tic-tac-toe-box.filled {
+  pointer-events: none;
+}
+
+.tic-tac-toe-box:nth-child(1) { border-top-left-radius: 1rem;}
+.tic-tac-toe-box:nth-child(3) { border-top-right-radius: 1rem;}
+.tic-tac-toe-box:nth-child(7) { border-bottom-left-radius: 1rem;}
+.tic-tac-toe-box:nth-child(9) { border-bottom-right-radius: 1rem;}
+
+/* Spongebob */
+.tic-tac-toe-box.spongebob { background-image:  url('./images/character-cards/spongebob-character.png'); background-size: cover; }
+.tic-tac-toe-box.patrick { background-image:  url('./images/character-cards/patrick-character.png'); background-size: cover; }
+.tic-tac-toe-box.squidward { background-image:  url('./images/character-cards/squidward-character.png'); background-size: cover; }
+.tic-tac-toe-box.mrkrabs { background-image:  url('./images/character-cards/mrkrabs-character.png'); background-size: cover; }
+.tic-tac-toe-box.sandy { background-image:  url('./images/character-cards/sandy-character.png'); background-size: cover; }
+.tic-tac-toe-box.plankton { background-image:  url('./images/character-cards/plankton-character.png'); background-size: cover; }
+/* Marvel */
+.tic-tac-toe-box.spiderman { background-image:  url('./images/character-cards/spiderman-character.png'); background-size: cover; }
+.tic-tac-toe-box.spidergwen { background-image:  url('./images/character-cards/spidergwen-character.png'); background-size: cover; }
+.tic-tac-toe-box.wolverine { background-image:  url('./images/character-cards/wolverine-character.png'); background-size: cover; }
+.tic-tac-toe-box.hulk { background-image:  url('./images/character-cards/hulk-character.png'); background-size: cover; }
+.tic-tac-toe-box.captainamerica { background-image:  url('./images/character-cards/captainamerica-character.png'); background-size: cover; }
+.tic-tac-toe-box.venom { background-image:  url('./images/character-cards/venom-character.png'); background-size: cover; }
+/* Pokemon */
+.tic-tac-toe-box.charmander { background-image:  url('./images/character-cards/charmander-character.png'); background-size: cover; }
+.tic-tac-toe-box.squirtle { background-image:  url('./images/character-cards/squirtle-character.png'); background-size: cover; }
+.tic-tac-toe-box.bulbasaur { background-image:  url('./images/character-cards/bulbasaur-character.png'); background-size: cover; }
+.tic-tac-toe-box.pikachu { background-image:  url('./images/character-cards/pikachu-character.png'); background-size: cover; }
+.tic-tac-toe-box.mewtwo { background-image:  url('./images/character-cards/mewtwo-character.png'); background-size: cover; }
+.tic-tac-toe-box.lucario { background-image:  url('./images/character-cards/lucario-character.png'); background-size: cover; }
+
+.construction-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
