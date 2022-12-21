@@ -6,6 +6,7 @@ import TicTacToeBoard from './TicTacToeBoard'
 import GameExtraButtons from './GameExtraButtons'
 import WinMessage from './WinMessage'
 import RulesDisplay from './RulesDisplay'
+import ConnectFourBoard from './ConnectFourBoard'
 
 export default function Game({ 
     gameSelect, 
@@ -21,7 +22,9 @@ export default function Game({
     winner,
     setWinner,
     tiles,
-    setTiles
+    setTiles,
+    c4Tiles,
+    setC4Tiles
 }) {
 
   function handleGamePicked(e) {
@@ -72,8 +75,12 @@ export default function Game({
         'Lucario'
       ]
     }
-
   ]
+
+  let buttonNames = []
+  gameSelect.forEach(game => {
+    if (game.name !== 'Home') buttonNames.push(game.name)
+  }) 
 
   return (
     <>
@@ -83,15 +90,16 @@ export default function Game({
           className='main-logo'
         />
         <div className='home-game-buttons'>
-          <button className='home-game-button'
-            value='Tic-Tac-Toe'
-            onClick={handleGamePicked}>Tic-Tac-Toe</button>
-          <button className='home-game-button'
-            value='Checkers'
-            onClick={handleGamePicked}>Checkers</button>
-          {/* <button className='home-game-button'
-            value='Chess'
-            onClick={handleGamePicked}>Chess</button> */}
+          {buttonNames.map(btn => {
+            let theKey = `${btn}-button-key`
+            let theTitle = `Play ${btn}!`
+            return (
+              <button className='home-game-button'
+                key={theKey}
+                value={btn}
+                title={theTitle}
+                onClick={handleGamePicked}>{btn}</button>)
+          })}
         </div>
       </div>}
       {gameCurrentlySelected === 'Checkers' && 
@@ -124,6 +132,7 @@ export default function Game({
           setPlayerOneChar={setPlayerOneChar}
           setPlayerTwoChar={setPlayerTwoChar}
           setTiles={setTiles}
+          setC4Tiles={setC4Tiles}
           playerOneChar={playerOneChar}
           playerTwoChar={playerTwoChar}/>}
         {rules !== '' && <RulesDisplay selectedGame={gameCurrentlySelected} setRules={setRules} />}
@@ -135,6 +144,7 @@ export default function Game({
           setPlayerTwoChar={setPlayerTwoChar}
           tiles={tiles}
           setTiles={setTiles}
+          setC4Tiles={setC4Tiles}
           setRules={setRules}
           selectedGame={gameCurrentlySelected}/>
         {gameCurrentlySelected === 'Tic-Tac-Toe' && <TicTacToeBoard 
@@ -145,6 +155,14 @@ export default function Game({
           setWinner={setWinner}
           tiles={tiles}
           setTiles={setTiles}/>}
+        {gameCurrentlySelected === 'Connect-Four' && <ConnectFourBoard 
+          playerOneChar={playerOneChar} 
+          playerTwoChar={playerTwoChar}
+          playerOneTurn={playerOneTurn}
+          setPlayerOneTurn={setPlayerOneTurn}
+          setWinner={setWinner}
+          c4Tiles={c4Tiles}
+          setC4Tiles={setC4Tiles}/>}
         <PlayerInfo 
           playerOneChar={playerOneChar}
           playerTwoChar={playerTwoChar}/>

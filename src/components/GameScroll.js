@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function GameScroll({ gameSelect, setGameSelect, setTiles, setPlayerOneTurn, setThemeSelect, setPlayerOneChar, setPlayerTwoChar, setWinner }) {
+export default function GameScroll({ gameSelect, setGameSelect, setTiles, setC4Tiles, setPlayerOneTurn, setThemeSelect, setPlayerOneChar, setPlayerTwoChar, setWinner }) {
   
   function handlePrevSelect(e) {
     let gameSelectCopy = [...gameSelect]
@@ -24,11 +24,24 @@ export default function GameScroll({ gameSelect, setGameSelect, setTiles, setPla
 
   function handleReset() {
     setWinner('')
-    setTiles(['','','','','','','','',''])
     setPlayerOneTurn(true)
     setThemeSelect('')
     setPlayerOneChar('')
     setPlayerTwoChar('')
+    if (currSelected.name === 'Tic-Tac-Toe') {
+      setTiles(['','','','','','','','',''])
+    }
+    else if (currSelected.name === 'Connect-Four') {
+      setC4Tiles([
+        ['','','','','','',''],
+        ['','','','','','',''],
+        ['','','','','','',''],
+        ['','','','','','',''],
+        ['','','','','','',''],
+        ['','','','','','',''],
+        ['','','','','','','']
+      ])
+    }
   }
 
   let currentId

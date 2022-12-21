@@ -1,10 +1,23 @@
 import React from 'react'
 
-export default function GameExtraButtons({ setTiles, setPlayerOneTurn, setThemeSelect, setPlayerOneChar, setPlayerTwoChar, setRules, selectedGame }) {
+export default function GameExtraButtons({ setTiles, setC4Tiles, setPlayerOneTurn, setThemeSelect, setPlayerOneChar, setPlayerTwoChar, setRules, selectedGame }) {
 
   function handleRestartGame() {
-    setTiles(['','','','','','','','',''])
     setPlayerOneTurn(true)
+    if (selectedGame === 'Tic-Tac-Toe') {
+      setTiles(['','','','','','','','',''])
+    }
+    else if (selectedGame === 'Connect-Four') {
+      setC4Tiles([
+        ['','','','','','',''],
+        ['','','','','','',''],
+        ['','','','','','',''],
+        ['','','','','','',''],
+        ['','','','','','',''],
+        ['','','','','','',''],
+        ['','','','','','','']
+      ])
+    }
   }
 
   function handleRepickTheme() {

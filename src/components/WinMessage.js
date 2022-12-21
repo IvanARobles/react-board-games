@@ -4,6 +4,7 @@ export default function WinMessage({
     winner, 
     setWinner, 
     setTiles, 
+    setC4Tiles,
     setPlayerOneTurn, 
     setThemeSelect, 
     setPlayerOneChar, 
@@ -14,9 +15,22 @@ export default function WinMessage({
     playerTwoChar }) {
 
   function handleRestartGame() {
-    setWinner('')
-    setTiles(['','','','','','','','',''])
-    setPlayerOneTurn(true)
+    if (gameSelect.find(opt => opt.selected).name === 'Tic-Tac-Toe') {
+      setTiles(['','','','','','','','',''])
+    }
+    else if (gameSelect.find(opt => opt.selected).name === 'Connect-Four') {
+        setC4Tiles([
+            ['','','','','','',''],
+            ['','','','','','',''],
+            ['','','','','','',''],
+            ['','','','','','',''],
+            ['','','','','','',''],
+            ['','','','','','',''],
+            ['','','','','','','']
+          ])
+      }
+      setWinner('')
+      setPlayerOneTurn(true)
   }
 
   function handleRepickTheme() {
@@ -36,6 +50,14 @@ export default function WinMessage({
     nowSelectedCopy.selected = true
     setGameSelect(gameSelectCopy)
   }
+
+  function handlePeek() {
+    document.querySelector('.win-message-blocker').classList.add('peek')
+    setTimeout(function(){
+        document.querySelector('.win-message-blocker').classList.remove('peek')
+    }, 4000)
+  }
+
   let playerOneClass = `player-icon bordered ${playerOneChar.toLowerCase()}`
   let playerTwoClass = `player-icon bordered ${playerTwoChar.toLowerCase()}`
   let winnerClass = 'error'
@@ -74,6 +96,13 @@ export default function WinMessage({
           title='Return Home'
         >
           Home
+        </button>
+        <button 
+          onClick={handlePeek}
+          className='modal-button'
+          title='Quickly View Board'
+        >
+          Review Board
         </button>
           </div>
         </div>

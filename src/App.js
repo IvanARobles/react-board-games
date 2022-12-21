@@ -21,11 +21,16 @@ function App() {
     },
     {
       id: 2,
+      name: 'Connect-Four',
+      selected: false
+    },
+    {
+      id: 3,
       name: 'Checkers',
       selected: false
     },
     // {
-    //   id: 3,
+    //   id: 4,
     //   name: 'Chess',
     //   selected: false
     // }
@@ -36,6 +41,15 @@ function App() {
   let [playerTwoChar, setPlayerTwoChar] = useState('')
   let [winner, setWinner] = useState('')
   let [tiles, setTiles] = useState(['','','','','','','','',''])
+  let [c4Tiles, setC4Tiles] = useState([
+    ['','','','','','',''],
+    ['','','','','','',''],
+    ['','','','','','',''],
+    ['','','','','','',''],
+    ['','','','','','',''],
+    ['','','','','','',''],
+    ['','','','','','','']
+  ])
   let [playerOneTurn, setPlayerOneTurn] = useState(true)
 
   let pageClass
@@ -60,7 +74,10 @@ function App() {
         winner={winner}
         setWinner={setWinner}
         tiles={tiles}
-        setTiles={setTiles}/>
+        setTiles={setTiles}
+        c4Tiles={c4Tiles}
+        setC4Tiles={setC4Tiles}
+      />
       {!gameSelect.find(opt => opt.name === 'Home').selected && 
         <GameScroll 
           gameSelect={gameSelect} 
@@ -70,6 +87,7 @@ function App() {
           setPlayerOneChar={setPlayerOneChar}
           setPlayerTwoChar={setPlayerTwoChar}
           setWinner={setWinner}
+          setC4Tiles={setC4Tiles}
           setTiles={setTiles}/>}
     </div> 
   );

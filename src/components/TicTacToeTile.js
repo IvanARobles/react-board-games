@@ -14,6 +14,7 @@ export default function TicTacToeTile({ tiles, setTiles, idx, playerOneTurn, set
     setTiles(tilesCopy)
     setPlayerOneTurn(!playerOneTurn)
     checkOutcome(tilesCopy)
+    console.log("handle click tic tac toe")
   }
 
   function checkOutcome(tilesCopy) {
@@ -28,6 +29,7 @@ export default function TicTacToeTile({ tiles, setTiles, idx, playerOneTurn, set
             if (playerOneTurn) setWinner('Player One') 
             else setWinner('Player Two')
             winnerFound = true;
+            return
         }
     })
     if (winnerFound) return
