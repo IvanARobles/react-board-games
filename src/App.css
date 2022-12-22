@@ -317,13 +317,14 @@
 
 .win-message-blocker.peek,
 .theme-select-blocker.peek {
-  opacity: 0.25;
+  opacity: 0.15;
 }
 
 .win-message-blocker.peek .win-message-box,
 .theme-select-blocker.peek .theme-select-box,
 .theme-select-blocker.peek .character-select-box {
   opacity: 0;
+  pointer-events: none;
 }
 
 
