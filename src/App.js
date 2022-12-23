@@ -26,7 +26,7 @@ function App() {
     },
     {
       id: 3,
-      name: 'Checkers',
+      name: 'Reversi',
       selected: false
     },
     // {
@@ -50,6 +50,18 @@ function App() {
     ['','','','','','',''],
     ['','','','','','','']
   ])
+  let [revTiles, setRevTiles] = useState([
+    ['','','','','','','',''],
+    ['','','','','','','',''],
+    ['','','','','','','',''],
+    ['','','','','','','',''],
+    ['','','','','','','',''],
+    ['','','','','','','',''],
+    ['','','','','','','',''],
+    ['','','','','','','','']
+  ])
+  let [revTileCount, setRevTileCount] = useState(4)
+  let [winnerCount, setWinnerCount] = useState(0)
   let [playerOneTurn, setPlayerOneTurn] = useState(true)
 
   let pageClass
@@ -77,6 +89,12 @@ function App() {
         setTiles={setTiles}
         c4Tiles={c4Tiles}
         setC4Tiles={setC4Tiles}
+        revTiles={revTiles}
+        setRevTiles={setRevTiles}
+        revTileCount={revTileCount}
+        setRevTileCount={setRevTileCount}
+        winnerCount={winnerCount}
+        setWinnerCount={setWinnerCount}
       />
       {!gameSelect.find(opt => opt.name === 'Home').selected && 
         <GameScroll 
@@ -87,8 +105,11 @@ function App() {
           setPlayerOneChar={setPlayerOneChar}
           setPlayerTwoChar={setPlayerTwoChar}
           setWinner={setWinner}
+          setTiles={setTiles}
           setC4Tiles={setC4Tiles}
-          setTiles={setTiles}/>}
+          setRevTiles={setRevTiles}
+          setRevTileCount={setRevTileCount}
+          setWinnerCount={setWinnerCount}/>}
     </div> 
   );
 }

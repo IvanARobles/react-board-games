@@ -1,6 +1,18 @@
 import React from 'react'
 
-export default function GameScroll({ gameSelect, setGameSelect, setTiles, setC4Tiles, setPlayerOneTurn, setThemeSelect, setPlayerOneChar, setPlayerTwoChar, setWinner }) {
+export default function GameScroll({ 
+  gameSelect, 
+  setGameSelect, 
+  setTiles, 
+  setC4Tiles, 
+  setRevTiles, 
+  setRevTileCount,
+  setWinnerCount,
+  setPlayerOneTurn, 
+  setThemeSelect, 
+  setPlayerOneChar, 
+  setPlayerTwoChar, 
+  setWinner }) {
   
   function handlePrevSelect(e) {
     let gameSelectCopy = [...gameSelect]
@@ -41,6 +53,19 @@ export default function GameScroll({ gameSelect, setGameSelect, setTiles, setC4T
         ['','','','','','',''],
         ['','','','','','','']
       ])
+    } else if (currSelected.name === 'Reversi') {
+      setRevTiles([
+        ['','','','','','','',''],
+        ['','','','','','','',''],
+        ['','','','','','','',''],
+        ['','','','','','','',''],
+        ['','','','','','','',''],
+        ['','','','','','','',''],
+        ['','','','','','','',''],
+        ['','','','','','','','']
+      ])
+      setRevTileCount(4)
+      setWinnerCount(0)
     }
   }
 

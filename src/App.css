@@ -2,6 +2,7 @@
   --header-color: #fff;
   --game-section-color: #fff;
   --game-section-color-hover: rgba(0, 0, 0, 0.25);
+  --game-section-color-hover-strong: rgba(0, 0, 0, 0.5);
   --scroll-bar-color: #fff;
   --header-text-color: #000;
   --game-section-text-color: #000;
@@ -9,8 +10,10 @@
   --theme-transition-time: 1000ms;
 
   --light-grey: #bac2d3;
-  --white-transparent-75p: rgba(255, 255, 255, 0.25); 
-  --black-transparent-75p: rgba(0, 0, 0, 0.25); 
+  --white-transparent-75p: rgba(255, 255, 255, 0.25);
+  --white-transparent-50p: rgba(255, 255, 255, 0.5);
+  --black-transparent-75p: rgba(0, 0, 0, 0.25);
+  --black-transparent-50p: rgba(0, 0, 0, 0.5);
   /* Variables used to color Spongebob Themed Games */
   --spng-header-color: #379bad;
   --spng-background-color: #329dc5;
@@ -60,6 +63,7 @@
   --header-color: var(--spng-header-color);
   --game-section-color: var(--spng-background-color);
   --game-section-color-hover: var(--white-transparent-75p);
+  --game-section-color-hover-strong: var(--white-transparent-50p);
   --scroll-bar-color: var(--spng-scroll-bar-color);
   --header-text-color: var(--spng-line-color);
   --game-section-text-color: var(--spng-line-color);
@@ -75,6 +79,7 @@
   --header-color: var(--marv-header-color);
   --game-section-color: var(--marv-background-color);
   --game-section-color-hover: var(--black-transparent-75p);
+  --game-section-color-hover-strong: var(--black-transparent-50p);
   --scroll-bar-color: var(--marv-scroll-bar-color);
   --header-text-color: var(--marv-header-text-color);
   --game-section-text-color: var(--marv-line-color);
@@ -90,6 +95,7 @@
   --header-color: var(--poke-header-color);
   --game-section-color: var(--poke-background-color);
   --game-section-color-hover: var(--white-transparent-75p);
+  --game-section-color-hover-strong: var(--white-transparent-50p);
   --scroll-bar-color: var(--poke-scroll-bar-color);
   --header-text-color: var(--poke-line-color);
   --game-section-text-color: var(--poke-line-color);
@@ -325,6 +331,12 @@
 .theme-select-blocker.peek .character-select-box {
   opacity: 0;
   pointer-events: none;
+}
+
+.win-message-box > p {
+  margin-top: -1rem;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
 }
 
 
@@ -774,6 +786,7 @@
   align-items: center;
   background-color: transparent;
   overflow: hidden;
+  transition: background-color 150ms ease-in-out;
 }
 
 .tic-tac-toe-box:hover {
@@ -852,6 +865,7 @@
   background-color: transparent;
   overflow: hidden;
   background: no-repeat center center;
+  transition: background-color 150ms ease-in-out;
 }
 
 .connect-four-top-box {
@@ -911,10 +925,89 @@
 .connect-four-grid.mewtwo > .connect-four-column:hover > .connect-four-top-box{ background-image:  url('./images/character-cards/mewtwo-character.png'); background-size: cover; }
 .connect-four-grid.lucario > .connect-four-column:hover > .connect-four-top-box{ background-image:  url('./images/character-cards/lucario-character.png'); background-size: cover; }
 
+/***** Styling specifically for Reversi (Othello) *****/
+.reversi-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  place-items: center;
+  max-width: 90vw;
+  gap: 1px;
+  max-height: 90vw;
+  width: 380px;
+  height: 380px;
+}
 
+.reversi-box {
+  aspect-ratio: 1;
+  width: 100%;
+  border: 2px solid  var(--game-section-text-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  overflow: hidden;
+  transition: background-color 150ms ease-in-out, background-image 300ms ease-in-out;
+}
 
+.reversi-box.not-possible {
+  pointer-events: none;
+}
 
+.reversi-box.possible {
+  background-color: var(--game-section-color-hover);
+  cursor: pointer;
+}
 
+.reversi-box.possible:hover {
+  background-color: var(--game-section-color-hover-strong);
+}
+
+.reversi-box.filled {
+  pointer-events: none;
+}
+
+.reversi-box:nth-child(1) { border-top-left-radius: 1rem;}
+.reversi-box:nth-child(8) { border-top-right-radius: 1rem;}
+.reversi-box:nth-child(57) { border-bottom-left-radius: 1rem;}
+.reversi-box:nth-child(64) { border-bottom-right-radius: 1rem;}
+
+/* Spongebob */
+.reversi-box.spongebob { background-image:  url('./images/character-cards/spongebob-character.png'); background-size: cover; }
+.reversi-box.patrick { background-image:  url('./images/character-cards/patrick-character.png'); background-size: cover; }
+.reversi-box.squidward { background-image:  url('./images/character-cards/squidward-character.png'); background-size: cover; }
+.reversi-box.mrkrabs { background-image:  url('./images/character-cards/mrkrabs-character.png'); background-size: cover; }
+.reversi-box.sandy { background-image:  url('./images/character-cards/sandy-character.png'); background-size: cover; }
+.reversi-box.plankton { background-image:  url('./images/character-cards/plankton-character.png'); background-size: cover; }
+/* Marvel */
+.reversi-box.spiderman { background-image:  url('./images/character-cards/spiderman-character.png'); background-size: cover; }
+.reversi-box.spidergwen { background-image:  url('./images/character-cards/spidergwen-character.png'); background-size: cover; }
+.reversi-box.wolverine { background-image:  url('./images/character-cards/wolverine-character.png'); background-size: cover; }
+.reversi-box.hulk { background-image:  url('./images/character-cards/hulk-character.png'); background-size: cover; }
+.reversi-box.captainamerica { background-image:  url('./images/character-cards/captainamerica-character.png'); background-size: cover; }
+.reversi-box.venom { background-image:  url('./images/character-cards/venom-character.png'); background-size: cover; }
+/* Pokemon */
+.reversi-box.charmander { background-image:  url('./images/character-cards/charmander-character.png'); background-size: cover; }
+.reversi-box.squirtle { background-image:  url('./images/character-cards/squirtle-character.png'); background-size: cover; }
+.reversi-box.bulbasaur { background-image:  url('./images/character-cards/bulbasaur-character.png'); background-size: cover; }
+.reversi-box.pikachu { background-image:  url('./images/character-cards/pikachu-character.png'); background-size: cover; }
+.reversi-box.mewtwo { background-image:  url('./images/character-cards/mewtwo-character.png'); background-size: cover; }
+.reversi-box.lucario { background-image:  url('./images/character-cards/lucario-character.png'); background-size: cover; }
+
+.reversi-bottom {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.reversi-bottom > button {
+  margin-left: 1rem;
+}
+
+.underline {
+  text-decoration: underline;
+}
 
 /* Styling for games not finished */
 .construction-message {

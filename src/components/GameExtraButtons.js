@@ -1,6 +1,19 @@
 import React from 'react'
 
-export default function GameExtraButtons({ setTiles, setC4Tiles, setPlayerOneTurn, setThemeSelect, setPlayerOneChar, setPlayerTwoChar, setRules, selectedGame }) {
+export default function GameExtraButtons({ 
+    setTiles, 
+    setC4Tiles, 
+    setRevTiles, 
+    setRevTileCount,
+    setWinnerCount,
+    setPlayerOneTurn, 
+    setThemeSelect, 
+    setPlayerOneChar, 
+    setPlayerTwoChar, 
+    setRules, 
+    selectedGame, 
+    playerOneChar, 
+    playerTwoChar }) {
 
   function handleRestartGame() {
     setPlayerOneTurn(true)
@@ -17,8 +30,23 @@ export default function GameExtraButtons({ setTiles, setC4Tiles, setPlayerOneTur
         ['','','','','','',''],
         ['','','','','','','']
       ])
+    } else if (selectedGame === 'Reversi') {
+      setRevTiles([
+        ['','','','','','','',''],
+        ['','','','','','','',''],
+        ['','','','','','','',''],
+        ['','','',`${playerTwoChar.toLowerCase()}`,`${playerOneChar.toLowerCase()}`,'','',''],
+        ['','','',`${playerOneChar.toLowerCase()}`,`${playerTwoChar.toLowerCase()}`,'','',''],
+        ['','','','','','','',''],
+        ['','','','','','','',''],
+        ['','','','','','','','']
+      ])
+      setRevTileCount(4)
+      setWinnerCount(0)
     }
   }
+
+  
 
   function handleRepickTheme() {
     setThemeSelect('')

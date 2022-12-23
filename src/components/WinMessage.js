@@ -5,6 +5,10 @@ export default function WinMessage({
     setWinner, 
     setTiles, 
     setC4Tiles,
+    setRevTiles,
+    setRevTileCount, 
+    winnerCount,
+    setWinnerCount,
     setPlayerOneTurn, 
     setThemeSelect, 
     setPlayerOneChar, 
@@ -15,10 +19,11 @@ export default function WinMessage({
     playerTwoChar }) {
 
   function handleRestartGame() {
-    if (gameSelect.find(opt => opt.selected).name === 'Tic-Tac-Toe') {
+    let selectedGame = gameSelect.find(opt => opt.selected).name
+    if (selectedGame === 'Tic-Tac-Toe') {
       setTiles(['','','','','','','','',''])
     }
-    else if (gameSelect.find(opt => opt.selected).name === 'Connect-Four') {
+    else if (selectedGame === 'Connect-Four') {
         setC4Tiles([
             ['','','','','','',''],
             ['','','','','','',''],
@@ -28,7 +33,20 @@ export default function WinMessage({
             ['','','','','','',''],
             ['','','','','','','']
           ])
-      }
+    } else if (selectedGame === 'Reversi') {
+      setRevTiles([
+        ['','','','','','','',''],
+        ['','','','','','','',''],
+        ['','','','','','','',''],
+        ['','','',`${playerTwoChar.toLowerCase()}`,`${playerOneChar.toLowerCase()}`,'','',''],
+        ['','','',`${playerOneChar.toLowerCase()}`,`${playerTwoChar.toLowerCase()}`,'','',''],
+        ['','','','','','','',''],
+        ['','','','','','','',''],
+        ['','','','','','','','']
+      ])
+      setRevTileCount(4)
+      setWinnerCount(0)
+    }
       setWinner('')
       setPlayerOneTurn(true)
   }
@@ -75,35 +93,37 @@ export default function WinMessage({
             <div className={winnerClass}></div>
             <h2>Wins!</h2>
           </div>}
+          {winnerCount !== 0 && winner === 'Tie' && <p>Both had: {winnerCount}</p>}
+          {winnerCount !== 0 && winner !== 'Tie' && <p>Winner had: {winnerCount}</p>}
           <div className='win-buttons'>
-        <button 
-          onClick={handleRestartGame}
-          className='modal-button'
-          title='Restart Game'
-        >
-          Restart
-        </button>
-        <button 
-          onClick={handleRepickTheme}
-          className='modal-button'
-          title='Pick Theme and Characters'
-        >
-          Re-pick
-        </button>
-        <button 
-          onClick={handleReturnHome}
-          className='modal-button'
-          title='Return Home'
-        >
-          Home
-        </button>
-        <button 
-          onClick={handlePeek}
-          className='modal-button'
-          title='Quickly View Board'
-        >
-          Review Board
-        </button>
+            <button 
+              onClick={handleRestartGame}
+              className='modal-button'
+              title='Restart Game'
+            >
+            Restart
+            </button>
+            <button 
+              onClick={handleRepickTheme}
+              className='modal-button'
+              title='Pick Theme and Characters'
+            >
+            Re-pick
+            </button>
+            <button 
+              onClick={handleReturnHome}
+              className='modal-button'
+              title='Return Home'
+            >
+            Home
+            </button>
+            <button 
+              onClick={handlePeek}
+              className='modal-button'
+              title='Quickly View Board'
+            >
+            Review Board
+            </button>
           </div>
         </div>
       </section>

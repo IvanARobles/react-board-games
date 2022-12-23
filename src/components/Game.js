@@ -7,6 +7,7 @@ import GameExtraButtons from './GameExtraButtons'
 import WinMessage from './WinMessage'
 import RulesDisplay from './RulesDisplay'
 import ConnectFourBoard from './ConnectFourBoard'
+import ReversiBoard from './ReversiBoard'
 
 export default function Game({ 
     gameSelect, 
@@ -24,7 +25,13 @@ export default function Game({
     tiles,
     setTiles,
     c4Tiles,
-    setC4Tiles
+    setC4Tiles,
+    revTiles,
+    setRevTiles,
+    revTileCount,
+    setRevTileCount,
+    winnerCount, 
+    setWinnerCount
 }) {
 
   function handleGamePicked(e) {
@@ -106,13 +113,8 @@ export default function Game({
         <div className='construction-message'>
         <div>Under Construction...</div>
       </div>}
-      {gameCurrentlySelected === 'Chess' && 
-        <div className='construction-message'>
-        <div>Under Construction...</div>
-      </div>}
       {gameCurrentlySelected !== 'Home' && 
         gameCurrentlySelected !== 'Checkers' &&
-        gameCurrentlySelected !== 'Chess' &&
         <div className={gameClassName}>
         {playerTwoChar === '' && <ThemeSelect selectedGame={gameCurrentlySelected} 
           possibleThemes={possibleThemes}
@@ -122,6 +124,7 @@ export default function Game({
           setPlayerOneChar={setPlayerOneChar}
           playerTwoChar={playerTwoChar}
           setPlayerTwoChar={setPlayerTwoChar}/>}
+
         {winner !== '' && <WinMessage 
           gameSelect={gameSelect}
           setGameSelect={setGameSelect}
@@ -133,8 +136,13 @@ export default function Game({
           setPlayerTwoChar={setPlayerTwoChar}
           setTiles={setTiles}
           setC4Tiles={setC4Tiles}
+          setRevTiles={setRevTiles}
+          setRevTileCount={setRevTileCount}
+          winnerCount={winnerCount}
+          setWinnerCount={setWinnerCount}
           playerOneChar={playerOneChar}
           playerTwoChar={playerTwoChar}/>}
+
         {rules !== '' && <RulesDisplay selectedGame={gameCurrentlySelected} setRules={setRules} />}
 
         <GameExtraButtons 
@@ -142,11 +150,17 @@ export default function Game({
           setThemeSelect={setThemeSelect}
           setPlayerOneChar={setPlayerOneChar}
           setPlayerTwoChar={setPlayerTwoChar}
+          playerOneChar={playerOneChar} 
+          playerTwoChar={playerTwoChar}
           tiles={tiles}
           setTiles={setTiles}
           setC4Tiles={setC4Tiles}
+          setRevTiles={setRevTiles}
+          setRevTileCount={setRevTileCount}
+          setWinnerCount={setWinnerCount}
           setRules={setRules}
           selectedGame={gameCurrentlySelected}/>
+
         {gameCurrentlySelected === 'Tic-Tac-Toe' && <TicTacToeBoard 
           playerOneChar={playerOneChar} 
           playerTwoChar={playerTwoChar}
@@ -155,6 +169,7 @@ export default function Game({
           setWinner={setWinner}
           tiles={tiles}
           setTiles={setTiles}/>}
+
         {gameCurrentlySelected === 'Connect-Four' && <ConnectFourBoard 
           playerOneChar={playerOneChar} 
           playerTwoChar={playerTwoChar}
@@ -163,6 +178,19 @@ export default function Game({
           setWinner={setWinner}
           c4Tiles={c4Tiles}
           setC4Tiles={setC4Tiles}/>}
+
+        {gameCurrentlySelected === 'Reversi' && <ReversiBoard 
+          playerOneChar={playerOneChar} 
+          playerTwoChar={playerTwoChar}
+          playerOneTurn={playerOneTurn}
+          setPlayerOneTurn={setPlayerOneTurn}
+          setWinner={setWinner}
+          revTiles={revTiles}
+          setRevTiles={setRevTiles}
+          revTileCount={revTileCount}
+          setRevTileCount={setRevTileCount}
+          setWinnerCount={setWinnerCount}/>}
+
         <PlayerInfo 
           playerOneChar={playerOneChar}
           playerTwoChar={playerTwoChar}/>

@@ -14,7 +14,6 @@ export default function ConnectFourTile({ c4Tiles, setC4Tiles, idx, colIdx, play
     }
     
     return (
-      <div className={tileClass}
-      ></div>
+      <div className={tileClass}></div>
     )
 }

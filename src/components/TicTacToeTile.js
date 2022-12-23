@@ -14,7 +14,6 @@ export default function TicTacToeTile({ tiles, setTiles, idx, playerOneTurn, set
     setTiles(tilesCopy)
     setPlayerOneTurn(!playerOneTurn)
     checkOutcome(tilesCopy)
-    console.log("handle click tic tac toe")
   }
 
   function checkOutcome(tilesCopy) {
@@ -69,6 +68,7 @@ export default function TicTacToeTile({ tiles, setTiles, idx, playerOneTurn, set
   return (
     <div className={tileClass}
       onClick={handleBoxClick}
+      title="Place Character Token"
     ></div>
   )
 }
