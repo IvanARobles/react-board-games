@@ -35,6 +35,8 @@ export default function ReversiBoard({
         ['','','','','','','',''],
         ['','','','','','','','']
       ])
+    // The following comment disables the warning given for not passing "setRevTiles" as a dependency
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [playerOneChar, playerTwoChar])
 
   function handleSkipTurn() {
