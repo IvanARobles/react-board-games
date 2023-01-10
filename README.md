@@ -1,6 +1,6 @@
 # Ivan Robles - Cartoon-Themed Board Games - React App
 
-Do you like playing board games? Do you like cartoons? Then this is the project for you. This website houses various board games that you can play locally, all from your favorite device! Pick a game, pick a cartoon theme, pick you character from that theme and start playing!
+Do you like playing board games? Do you like cartoons? If you said yes, then this is the project for you. This website houses various board games that you can play locally, all from your favorite device! Pick a game, pick a cartoon theme, pick you character from that theme and start playing!
 
 [Open Board Games Website](https://ivanroblesboardgames.netlify.app/)
 
