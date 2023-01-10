@@ -2,19 +2,11 @@
 
 Do you like playing board games? Do you like cartoons? Then this is the project for you. This website houses various board games that you can play locally, all from your favorite device! Pick a game, pick a cartoon theme, pick you character from that theme and start playing!
 
-Email: ivanroblesmvp@gmail.com
-
 [Open Board Games Website](https://ivanroblesboardgames.netlify.app/)
-
-## What to Expect
-
-This website demonstrates my abilities as a software engineer and designer! You can learn a little bit about my life, see some of the art I have created over the years, or explore the programming projects I've worked on. As a fun bonus, you can even walk through my interactive resume, which is like a simple video game full of drawings I created.
 
 ## How it Was Made
 
-The website was made using HTML, CSS, and React.js. Because many components are carried over between games, using React was the best choice to render them. This means that things like choosing the theme you want to play on stays the same (or almost the same) regardless of which game you chose to play. 
-
-I enjoy rendering everything myself. In addition, I used Photoshop to create many of the images you will see (especially in the interactive resume). I attempted to create many custom effects that make it more interesting. This means the website is probably not as coherent as a large company's website (where they would likely have, for example, the same effect for every button), but this was specifically so I could 1) make it fun and 2) get more practice creating everything from scratch.
+The website was made using CSS and React.js (and HTML, technically). It starts as a main menu where the user can decide which board game they want to play. When a game is selected, the screen renders a title, a play area (containing a board and player information), a navigation bar, and a customization box. The customizations are next, where the user selects a theme, which updates CSS variables to display the page differently, and each player select their character tokens. Finally the game begins and a winner message displays, allowing the reset or switching of games. Because many components are carried over between games, using React was the best choice to render them. This means that aspects such as choosing the theme you want to play on stays the same (or almost the same) regardless of which game you chose to play. Essentially, buttons that cause the re-rendering of elements are simply changing state variables. 
 
 ## Games Included
 
@@ -32,8 +24,13 @@ Currently, each game has 3 different themes you can choose that changes the look
 
 [**Spongebob Squarepants**](https://www.nick.com/shows/spongebob-squarepants)
 
-**Marvel Comics**
+[**Marvel Comics**](https://www.marvel.com/comics?&options%5Boffset%5D=0&totalcount=12)
 
-**Pokemon**
+[**Pokemon**](https://www.pokemon.com/us/pokedex)
 
+## Contact
+
+Feel free to contact me for any reason! And if you want to learn more about me as a software engineer, check out my interactive [personal website](https://www.theivanrobles.com/) 
+
+Email: ivanroblesmvp@gmail.com
 
