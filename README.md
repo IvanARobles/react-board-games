@@ -16,7 +16,7 @@ Currently, the website allows users to play locally 3 different 2-player games: 
 
 **Connect-Four** is similar to Tic-Tac-Toe, except for two key differences: players must get 4 in a row, and players can only place their tokens on the bottom-most available spot in the column picked, as if the entire board has gravity pulling the pieces from the bottom.
 
-**In Reservsi**, also called Othello (although they have slight variations in their rules), the object of the game is to have the most tokens on the board once the board is full. Players take turns placing their token, each time having to "flank" or "capture" the opponents tokens in a straight line. For more detailed instructions on Reversi, please [click here](https://www.coolmathgames.com/blog/how-to-play-reversi-basics-and-best-strategies)
+**In Reservsi**, also called Othello (although they have slight variations in their rules), the object of the game is to have the most tokens on the board once the board is full. Players take turns placing their token, each time having to "flank" or "capture" the opponents tokens in a straight line. For more detailed instructions on Reversi, please [click here.](https://www.coolmathgames.com/blog/how-to-play-reversi-basics-and-best-strategies)
 
 ## Themes Included
 
