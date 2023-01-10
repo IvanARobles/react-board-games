@@ -4,7 +4,7 @@ If you are interested in getting to know me, my software engineering, or my art,
 
 Email: ivanroblesmvp@gmail.com
 
-[Open Board Games Website](https://www.ivanroblesboardgames.netlify.app/)
+[Open Board Games Website](https://ivanroblesboardgames.netlify.app/)
 
 ## What to Expect
 
