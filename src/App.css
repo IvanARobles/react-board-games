@@ -1,12 +1,13 @@
 :root {
-  --header-color: #fff;
+  --default-background-color: #1a4b3a;
+  --header-color: #1a4b3a;
   --game-section-color: #fff;
   --game-section-color-hover: rgba(0, 0, 0, 0.25);
   --game-section-color-hover-strong: rgba(0, 0, 0, 0.5);
-  --scroll-bar-color: #fff;
-  --header-text-color: #000;
+  --scroll-bar-color: #1a4b3a;
+  --header-text-color: white;
   --game-section-text-color: #000;
-  --scroll-bar-text-color: #000;
+  --scroll-bar-text-color: white;
   --theme-transition-time: 1000ms;
 
   --light-grey: #bac2d3;
@@ -37,9 +38,9 @@
 
 }
 
-.main-logo {
+.main-title {
   max-width: 95%;
-  width: 500px;
+  width: 600px;
   /* margin-bottom: 2rem; */
 }
 
@@ -51,6 +52,7 @@
   color: var(--line-color);
 }
 
+/* Empty image to make transitions smoother when choosing a theme */
 .entire-page .game-section{
   background: no-repeat center center;
   background-image: url('./images/transparent-background.png');
@@ -148,6 +150,10 @@
 
 .game-section-home {
   min-height: 100vh;
+  background: no-repeat center center;
+  background-image: url('./images/title-back.png');
+  background-size: contain;
+  background-color: var(--default-background-color);
 }
 
 .scroll-game-buttons-wrapper {
@@ -220,16 +226,26 @@
 .home-game-buttons {
   display: flex;
   flex-direction: column;
+  /* position: absolute; */
+  margin-top: -200px;
+}
+
+@media (max-width: 500px) {
+  .home-game-buttons {
+    position: absolute;
+    bottom: 10vh;
+}
+
 }
 
 .home-game-button {
   position: relative;
   margin: 0.5rem;
   padding: 5px 7.5px;
-  border: 1px solid black;
+  border: 3px solid white;
   border-radius: 5px;
-  background-color: transparent;
-  color: black;
+  background-color: white;
+  color: var(--default-background-color);
   cursor: pointer;
   transition: 200ms ease-in-out;
   font-size: 1.2rem;
@@ -237,8 +253,9 @@
 
 .home-game-button:hover,
 .home-game-button:focus {
-  background-color: black;
+  background-color: transparent;
   color: white;
+  border-radius: 0;
 }
 
 .home-game-button::after {
@@ -248,17 +265,17 @@
   bottom: calc(2  * -1px);
   left: calc(2  * -1px);
   right: calc(2  * -1px);
-  border: 3px solid black;
+  border: 3px solid white;
   border-radius: 5px;
   transition: 200ms ease-in-out;
 }
 
 .home-game-button:hover::after,
 .home-game-button:focus::after {
-  top: calc(5  * -1px);
-  bottom: calc(5  * -1px);
-  left: calc(5  * -1px);
-  right: calc(5  * -1px);
+  top: calc(8  * -1px);
+  bottom: calc(8  * -1px);
+  left: calc(8  * -1px);
+  right: calc(8  * -1px);
 }
 
 .win-message-blocker,
@@ -275,7 +292,7 @@
   z-index: 5;
   background-color: rgba(0, 0, 0, 0.5);
   transition: all 200ms ease-in-out, opacity 500ms ease-in-out;
-  color: black;
+  color: white;
 }
 
 .theme-buttons {
@@ -314,6 +331,7 @@
 .character-select-box {
   text-align: center;
   background-color: white;
+  color: black;
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
   max-width: 80vw;

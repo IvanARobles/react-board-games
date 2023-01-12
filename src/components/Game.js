@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import logo from '../images/board-games-title.png'
+import title from '../images/board-games-title-characters.png'
 import ThemeSelect from './ThemeSelect'
 import PlayerInfo from './PlayerInfo'
 import TicTacToeBoard from './TicTacToeBoard'
@@ -93,8 +93,8 @@ export default function Game({
     <>
       {gameCurrentlySelected === 'Home' && <div className={gameClassName}>
         <img alt='Ivan Robles Cartoon-Themed Board Games'
-          src={logo}
-          className='main-logo'
+          src={title}
+          className='main-title'
         />
         <div className='home-game-buttons'>
           {buttonNames.map(btn => {
