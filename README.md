@@ -1,70 +1,36 @@
-# Getting Started with Create React App
+# Ivan Robles - Cartoon-Themed Board Games - React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Do you like playing board games? Do you like cartoons? If you said yes, then this is the project for you. This website houses various board games that you can play locally, all from your favorite device! Pick a game, pick a cartoon theme, pick you character from that theme and start playing!
 
-## Available Scripts
+[Open Board Games Website](https://ivanroblesboardgames.netlify.app/)
 
-In the project directory, you can run:
+## How it Was Made
 
-### `npm start`
+The website was made using CSS and React.js (and HTML, technically). It starts as a main menu where the user can decide which board game they want to play. When a game is selected, the screen renders a title, a play area (containing a board and player information), a navigation bar, and a customization box. The customizations are next, where the user selects a theme, which updates CSS variables to display the page differently, and each player select their character tokens. Finally the game begins and a winner message displays, allowing the reset or switching of games. Because many components are carried over between games, using React was the best choice to render them. This means that aspects such as choosing the theme you want to play on stays the same (or almost the same) regardless of which game you chose to play. Essentially, buttons that cause the re-rendering of elements are simply changing state variables. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Games Included
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Currently, the website allows users to play locally 3 different 2-player games: Tic-Tac-Toe, Connect-Four, and Reversi (Othello).
 
-### `npm test`
+**In Tic-Tac-Toe**, players take turns placing their tokens on a 3x3 grid. The player to first get three in-a-row is the winner.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Connect-Four** is similar to Tic-Tac-Toe, except for two key differences: players must get 4 in a row, and players can only place their tokens on the bottom-most available spot in the column picked, as if the entire board has gravity pulling the pieces from the bottom.
 
-### `npm run build`
+**In Reservsi**, also called Othello (although they have slight variations in their rules), the object of the game is to have the most tokens on the board once the board is full. Players take turns placing their token, each time having to "flank" or "capture" the opponents tokens in a straight line. For more detailed instructions on Reversi, please [click here.](https://www.coolmathgames.com/blog/how-to-play-reversi-basics-and-best-strategies)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Themes Included
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Currently, each game has 3 different themes you can choose that changes the look of the entire site and determines which characters/game pieces you can choose from. The themes are:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+[**Spongebob Squarepants**](https://www.nick.com/shows/spongebob-squarepants)
 
-### `npm run eject`
+[**Marvel Comics**](https://www.marvel.com/comics?&options%5Boffset%5D=0&totalcount=12)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+[**Pokemon**](https://www.pokemon.com/us/pokedex)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Contact
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Feel free to contact me for any reason! And if you want to learn more about me as a software engineer, check out my interactive [personal website](https://www.theivanrobles.com/) 
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Email: ivanroblesmvp@gmail.com
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
